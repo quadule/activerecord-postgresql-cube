@@ -20,9 +20,10 @@ Or install it yourself as:
 
 ## Usage
 
-Add and index a column with a `cube` type:
+Make sure you have the cube extension enabled on your database, then add and index a column with a `cube` type:
 
 ```ruby
+enable_extension "cube"
 add_column :things, :features, :cube
 add_index :things, :features, using: "gist"
 ```
