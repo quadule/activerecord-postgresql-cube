@@ -16,7 +16,7 @@ module ActiveRecordPostgreSQLCube
       end
 
       private def cube_attributes(column_name, *attributes)
-        unless Thing.type_for_attribute(column_name.to_s).type == :cube
+        unless type_for_attribute(column_name.to_s).type == :cube
           raise ArgumentError, "#{column_name} is not a cube column"
         end
 
