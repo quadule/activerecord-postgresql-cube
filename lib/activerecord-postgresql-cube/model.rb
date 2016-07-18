@@ -7,7 +7,7 @@ module ActiveRecordPostgreSQLCube
     class_methods do
       def by_cube_distance(column_name, cube)
         column = arel_table[column_name]
-        cube_values = Arel.sql("'(#{cube.to_a.map(&method(:Float)).join(",")})'")
+        cube_values = Arel.sql("'#{ActiveRecord::Type.lookup(:cube).serialize(cube)}'")
         distance_operation = Arel::Nodes::InfixOperation.new("<->", column, cube_values)
         distance_column_name = %{"#{column_name}_distance"}
         distance = Arel::Nodes::As.new(distance_operation, Arel.sql(distance_column_name))
