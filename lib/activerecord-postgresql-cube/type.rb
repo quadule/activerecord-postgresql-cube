@@ -54,8 +54,8 @@ module ActiveRecord
     end
 
     class TableDefinition
-      def cube(name, options = {})
-        column(name, "cube", options)
+      def cube(name, **args)
+        column(name, "cube", **args)
       end
     end
   end
